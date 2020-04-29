@@ -1,3 +1,4 @@
+
 //DECLARANDO AS VARIAVEIS.
         int cpf = 123456789;
         int senha = 123456;
@@ -6,11 +7,13 @@
         int menu;
         double saldo = 1000;
         double deposito = 0;
-        double valortotal;
+        double valortotal = 0;
+        double valortotal2;
         double saque = 0;
+        int a = 10;
 //SCANNER
         Scanner ler = new Scanner (System.in);
-        
+        do {
 //BOAS VINDAS
         System.out.println("Olá seja bem vindo!");
        
@@ -19,18 +22,15 @@
         int cpf1 = ler.nextInt();
         
 //VERIFICANDO CPF
-         if(cpf1 == cpf){
+        do{
+        if(cpf1 == cpf){
             System.out.println("CPF CORRETO!");      
 }       else {
-            System.out.println("CPF INCORRETAO, DIGITE NOVAMENTE");
+            System.out.println("CPF INCORRETO, DIGITE NOVAMENTE");
             cpf1 = ler.nextInt();
             cont++;
-        } if (cpf1 == cpf){
-            System.out.println();
-        } else if (cont < 3){
-            System.out.println("CONTA BLOQUEADA");
-            System.exit(0);
-        }
+} 
+}       while (cpf1 != cpf);
         
            
 //INSERINDO SENHA
@@ -45,20 +45,22 @@
             System.out.println("SENHA INCORRETA, DIGITE NOVAMENTE");
             senha1 = ler.nextInt();
             cont++;
-        } if (senha1 == senha){
+}           if (senha1 == senha){
             System.out.println();
-        } else if (cont < 3){
+}       else if (cont < 3){
             System.out.println("CONTA BLOQUEADA");
             System.exit(0);
-        }
+}
        
 
 
-//MENU DE OPÇÕES            
+//MENU DE OPÇÕES   
+do {
+            
             System.out.println("Sr(a) PORTADOR DO CPF: 123456789");
             System.out.println ("DIGITE 1 PARA MOSTRAR SALDO, 2 PARA DEPOSITAR, 3 PARA SACAR E 0 PARA SAIR");
             menu = ler.nextInt();
-            
+         
             switch (menu) {
                 case 1:
                     System.out.println("SALDO");
@@ -68,25 +70,28 @@
                     System.out.println("VOCÊ SELECIONOU DEPOSITO");
                     System.out.println("QUAL VALOR DO DEPÓSITO?");
                     deposito = ler.nextDouble();
+                    System.out.println ("VOCÊ DEPOSITOU: " + deposito);                   
+                    valortotal = saldo + deposito;
+                    System.out.println("VALOR TOTAL PÓS DEPÓSITO: " + valortotal);
                     break;
                 case 3:
                     System.out.println("VOCÊ SELECIONOU SACAR");
                     System.out.println("QUAL VALOR DESEJA SACAR?");
                     saque = ler.nextDouble();
+                    System.out.println ("VOCÊ SACOU: " + saque);
+                    valortotal2 = valortotal - saque;
+                    System.out.println("VALOR TOTAL PÓS SAQUE: " + valortotal2);
                     break;
-                case 4:
+                case 0:
                     System.out.println("SAIR");
                     break;
                     
                 default:
                     System.out.println("OPÇÃO INVALIDA, TENTE NOVAMENTE");
-                    break;
-}                  
-//AÇÕES REALIZADAS PELO CLIENTE            
-                valortotal = saldo + deposito;    
-                    System.out.println("O VALOR TOTAL EM CONTA É:  " + valortotal);
-                double valortotal1 = valortotal - saque;
-                    System.out.println("O VALOR TOTAL EM CONTA É: " + valortotal1);
-                 
-}
+                    break; }
+                        
+        }while (menu != 0);
+        }while (a != 0);
+          
+    }
 }
